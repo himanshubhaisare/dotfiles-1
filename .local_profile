@@ -1,0 +1,48 @@
+# Keep your custom environmental variables and aliases in this file
+# Any entries here will override default values set by sprout wrap
+
+## Override Values
+
+export SPT_HOME=${HOME}/workspace/spt
+#export MYSQL_URL=mysql.qa.sprucefinance.com:3306
+#export SPT_MYSQL_URL=mysql.qa.sprucefinance.com:3306
+# export EXTERNAL_SERVICES_IP=127.0.0.1
+# export P2_BASE_URL=tools.local.sprucefinance.com:4000
+# export ENABLE_XDEBUG="true"
+# export SPRING_PROFILES_ACTIVE=local
+
+
+## Custom Aliases and Environment Variables
+export AWS_ACCESS_KEY_ID=AKIAJ3DIIBSBETRZCA4A
+export AWS_SECRET_ACCESS_KEY=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
+export ERRBOT_REPO=${HOME}/workspace/opsbot
+
+# Load my aliases
+source $HOME/.aliases
+alias spruceup='cdjpar && gco && gcoall && gplall && cdspt && gco && gpl'
+alias git=hub
+
+# RSYNC to kirk
+alias synckirk='cd /Users/hbhaisare/workspace/spt;rsync -vrlptz --delete --exclude=".git" --exclude=".git*" --exclude=".svn" --exclude="Proxies" --exclude="nbproject" --exclude=".idea" --exclude="run_zf_script.sh" --exclude="env_vars.php" --safe-links /Users/hbhaisare/workspace/spt/ www-data@kirk.eng.cpf.com:/home/spt/tools/'
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec $SHELL -l"
+
+# Add tab completion for many Bash commands
+if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+	source "$(brew --prefix)/share/bash-completion/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion;
+fi;
+
+# Enable tab completion for `g` by marking it as an alias for `git`
+if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+	complete -o default -o nospace -F _git g;
+fi;
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+# phaclon
+export PATH=$PATH:/Users/hbhaisare/PhpstormProjects/massageme/vendor/phalcon/devtools
+export PTOOLSPATH=/Users/hbhaisare/PhpstormProjects/massageme/vendor/phalcon/devtools
