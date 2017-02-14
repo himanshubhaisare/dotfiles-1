@@ -3,19 +3,7 @@
 
 ## Override Values
 
-export SPT_HOME=${HOME}/workspace/spt
-#export MYSQL_URL=mysql.qa.sprucefinance.com:3306
-#export SPT_MYSQL_URL=mysql.qa.sprucefinance.com:3306
-# export EXTERNAL_SERVICES_IP=127.0.0.1
-# export P2_BASE_URL=tools.local.sprucefinance.com:4000
-# export ENABLE_XDEBUG="true"
-# export SPRING_PROFILES_ACTIVE=local
-
-
 ## Custom Aliases and Environment Variables
-export AWS_ACCESS_KEY_ID=AKIAJ3DIIBSBETRZCA4A
-export AWS_SECRET_ACCESS_KEY=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
-export ERRBOT_REPO=${HOME}/workspace/opsbot
 
 # Load my aliases
 source $HOME/.aliases
